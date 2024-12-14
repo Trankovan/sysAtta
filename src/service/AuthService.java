@@ -1,14 +1,15 @@
 package service;
+
 import model.Credentials;
 import model.UserRole;
 
 import java.util.List;
 
 public class AuthService {
-    private SimpleJsonDatabase jsonDatabase = new SimpleJsonDatabase();
+    private PostgreSQLDatabase database = new PostgreSQLDatabase();
 
     public UserRole authenticate(String username, String password) {
-        List<Credentials> credentialsList = jsonDatabase.readUsers();
+        List<Credentials> credentialsList = database.readUsers();
         for (Credentials credentials : credentialsList) {
             if (credentials.getUsername().equals(username) && credentials.getPassword().equals(password)) {
                 return credentials.getUserRole();
@@ -18,8 +19,8 @@ public class AuthService {
     }
 
     public void registerUser(Credentials credentials) {
-        List<Credentials> credentialsList = jsonDatabase.readUsers();
+        List<Credentials> credentialsList = database.readUsers();
         credentialsList.add(credentials);
-        jsonDatabase.writeUsers(credentialsList);
+        database.writeUsers(credentialsList);
     }
 }
