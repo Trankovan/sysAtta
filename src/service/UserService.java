@@ -1,12 +1,12 @@
 package service;
 
-import model.User;
+import model.Credentials;
 import repository.UserRepository;
 
 public class UserService {
     private UserRepository userRepository = new UserRepository();
 
-    public void registerUser(User user) {
+    public void registerUser(Credentials user) {
         userRepository.saveUser(user);
     }
 

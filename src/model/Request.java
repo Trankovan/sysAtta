@@ -11,6 +11,13 @@ public class Request {
     private UserMachine userMachine;
     private RequestStatus status;
 
+
+    public Request(int id, String title, String content) {
+        this.id = id;
+        this.title = title;
+        this.content=content;
+    }
+
     public int getId() {
         return id;
     }

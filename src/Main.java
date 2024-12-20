@@ -1,8 +1,14 @@
-import controller.ConsoleController;
+import controller.WebServerController;
+
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        ConsoleController consoleController = new ConsoleController();
-        consoleController.start();
+        WebServerController adminToolController = new WebServerController();
+        try {
+            adminToolController.startServer();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

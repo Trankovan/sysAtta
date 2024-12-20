@@ -1,4 +1,4 @@
-package service;
+package repository;
 
 import model.Credentials;
 import model.UserRole;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostgreSQLDatabase {
-    private static final String URL = "jdbc:postgresql://localhost:5432/yourdatabase";
-    private static final String USER = "yourusername";
-    private static final String PASSWORD = "yourpassword";
+    private static final String URL = "jdbc:postgresql://localhost:5433/admindatabase";
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "Avito-2020";
 
     public List<Credentials> readUsers() {
         List<Credentials> users = new ArrayList<>();
@@ -29,9 +29,10 @@ public class PostgreSQLDatabase {
         }
         return users;
     }
+
     public void saveUser(Credentials credentials) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement("INSERT INTO users (username, password, role) VALUES (?, ?, ?)")) {
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");) {
             statement.setString(1, credentials.getUsername());
             statement.setString(2, credentials.getPassword());
             statement.setString(3, credentials.getUserRole().name());
@@ -40,7 +41,5 @@ public class PostgreSQLDatabase {
             e.printStackTrace();
         }
     }
-    public void writeUsers(List<Credentials> users) {
-        // Implement logic to write users to PostgreSQL
-    }
+
 }

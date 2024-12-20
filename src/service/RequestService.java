@@ -1,4 +1,5 @@
 package service;
+
 import model.Request;
 import repository.RequestRepository;
 
@@ -15,7 +16,7 @@ public class RequestService {
         return requestRepository.getAllRequests();
     }
 
-    public void deleteRequest(int id) {
-        requestRepository.deleteRequest(id);
+    public void updateRequestStatus(int id, String status) {
+        requestRepository.updateRequestStatus(id, status);
     }
 }

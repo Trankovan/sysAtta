@@ -1,3 +1,0 @@
-admin,admin123,Admin
-user1,password1,Guest
-user2,password2,Guest
